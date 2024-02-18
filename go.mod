@@ -2,4 +2,7 @@ module github.com/ares-5/greenlight
 
 go 1.22.0
 
-require github.com/julienschmidt/httprouter v1.3.0 // indirect
+require (
+	github.com/julienschmidt/httprouter v1.3.0 // indirect
+	github.com/lib/pq v1.10.9
+)
