@@ -54,3 +54,16 @@ audit:
 	go vet ./...
 	@echo 'Running tests'
 	go test -race -vet=off ./...
+
+#######
+# BUILD
+#######
+
+git_description = $(shell git describe --always --dirty)
+linker_flags = '-s -X main.version=${git_description}'
+
+.PHONY: build/api
+build/api:
+	@echo 'Building cmd/api...'
+	go build -ldflags='-s' -o=./bin/api.exe ./cmd/api
+	GOOS=linux GOARCH=amd64 go build -ldflags=${linker_flags} -o=./bin/linux_amd64/api ./cmd/api
