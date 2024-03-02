@@ -59,7 +59,7 @@ audit:
 # BUILD
 #######
 
-git_description = $(shell git describe --always --dirty)
+git_description = $(shell git describe --always --dirty --tags --long)
 linker_flags = '-s -X main.version=${git_description}'
 
 .PHONY: build/api
